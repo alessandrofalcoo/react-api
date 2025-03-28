@@ -29,7 +29,6 @@ export default function Main() {
                     console.error('Non hai cancellato nessun post');
                 }
             })
-            .catch((error) => console.error('Error: ', error))
     }
 
 
