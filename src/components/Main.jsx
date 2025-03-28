@@ -5,7 +5,6 @@ const api_endpoint = 'http://localhost:3000/posts/'
 export default function Main() {
     const [posts, setPosts] = useState([])
 
-
     useEffect(() => {
         fetchData(api_endpoint)
     }, [])
@@ -20,6 +19,19 @@ export default function Main() {
             })
     }
 
+    function handleDeletePost(slug) {
+        const deleteEndPoint = `/${api_endpoint}`
+        fetch(deleteEndPoint, { method: 'DELETE' })
+            .then((res) => {
+                if (res) {
+                    setPosts(posts.filter((post) => post.slug !== slug));
+                } else {
+                    console.error('Non hai cancellato nessun post');
+                }
+            })
+            .catch((error) => console.error('Error: ', error))
+    }
+
 
     return (
         <>
@@ -32,7 +44,9 @@ export default function Main() {
                                     <img className='card-img-top' src={`http://localhost:3000/img/${post.image}`} alt={post.slug} />
                                     <div className="card-body">
                                         <h3>{post.title}</h3>
-                                        <button type="button" className='btn btn-danger'>Delete</button>
+                                        <div className="myBtn">
+                                            <button onClick={() => handleDeletePost(post.slug)} type="button" className='btn btn-danger'>Delete</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +56,6 @@ export default function Main() {
 
                 </div>
             </div>
-
         </>
     )
 }
