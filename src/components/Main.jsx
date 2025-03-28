@@ -32,6 +32,7 @@ export default function Main() {
                                     <img className='card-img-top' src={`http://localhost:3000/img/${post.image}`} alt={post.slug} />
                                     <div className="card-body">
                                         <h3>{post.title}</h3>
+                                        <button type="button" className='btn btn-danger'>Delete</button>
                                     </div>
                                 </div>
                             </div>
