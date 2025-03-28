@@ -1,5 +1,5 @@
 export default function Header() {
     return (
-        <h1>My posts Blog</h1>
+        <h1 className="text-center mt-3">My posts Blog</h1>
     )
 }
